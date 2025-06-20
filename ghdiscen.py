@@ -85,9 +85,6 @@ async def main(user, repos, use_all=False):
             repos = [f"{user}/{r}" if '/' not in r else r for r in repos]
 
         for repo in repos:
-            if '/' not in repo:
-                print(f"⚠️ Invalid repo format: {repo}. Use <owner>/<repo>")
-                continue
             owner, repo_name = repo.split('/')
             await enable_discussions_on_repo(page, owner, repo_name)
             await page.wait_for_timeout(1000)
